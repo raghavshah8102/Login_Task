@@ -22,29 +22,38 @@ if(!(isset($_SESSION['loggin'])) || $_SESSION['loggin'] !== true){
         <title>Dashboard</title>
     </head>
     <style>
-        body{
-            background: darkgray;
-            font-family: sans-serif;
+  .sidebar {
+    height: 100%;
+    width: 200px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 40px;
+    background-color: lightblue;
+}.sidebar div {
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+}.body-text {
+    margin-left: 200px;
+    font-size: 18px;
+}
+a{
+    text-decoration: none;
 
-        }
-        h1{
-            font-size: 40px;
-            font-weight: bold;
-            color: #4a4a4a;
-            margin-bottom: 30px;
-        }
-        
-        .btn{
-            top:50%;
-            background-color:#0a0a23;
-            color: #fff;
-            border:none; 
-            border-radius:10px; 
-            padding:15px;
-            min-height:30px; 
-            min-width: 120px;
-            
-  }
+}
+button{ 
+  background-color: lightcoral; 
+  border: none;
+  color: blue;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 70%;
+}
     </style>
 
     </style>
@@ -53,47 +62,35 @@ if(!(isset($_SESSION['loggin'])) || $_SESSION['loggin'] !== true){
             <?php include "db.php";
 
             ?>
+           <div class="body-text">
+           <h1>Dashboard</h1>
              <h3>Hello <?php echo $row['username']?> You're <?php echo $row['access_type'] ?></h3>
-        <h1>Dashboard</h1>
-        <form action="adduser.php"method="POST" enctype="multipart/form-data">
-            <button class="btn" type="submit" name="adduser">Add User</button>
-        </form>
-        <form action="view_user.php" method="post" enctype="multipart/form-data">
-        <button class="btn" type="submit" name="view">View</button>
-        </form>
+        
+        </div>
+        <div class="sidebar">
+        <ul class="sidebar-nav">
+            <h2>Menu</h2>
+        <a href="adduser.php"><button>Add User</button></a><br><br>
+        <a href="view_user.php"><button>View User</button></a><br><br>
         <?php
         if($row['access_type'] == 'admin' || $row['access_type'] == 'teacher'){ ?>
-
-        <form action="subject.php" method="post" enctype="multipart/form-data">
-            <button class="btn" type="submit" name="subject">Subject</button>
-        </form>
-        <form action="standard.php" method="post" enctype="multipart/form-data">
-            <button class="btn" type="submit" name="standard">Standard</button>
-        </form>
-        <form action="chapter.php" method="post" enctype="multipart/form-data">
-            <button class="btn" type="submit" name="chapter">Chapter</button>
-        </form>
+        <a href="subject.php"><button> Subject</button></a><br><br>
+        <a href="standard.php"><button>Standard</button></a><br><br>
+        <a href="chapter.php"><button>Chapter</button></a><br><br>
+        <a href="assign_sub.php"><button>Assign Subject</button></a><br><br>
+        <a href="assign_standard.php"><button>Assign Standard</button></a><br><br>
        
-        <form action="assign_sub.php"method="POST"enctype="multipart/form-data">
-            <button class="btn"type="submit" name="Assign Sub">Assign Sub</button>
-        </form>
-        <form action="assign_standard.php"method="POST"enctype="multipart/form-data">
-            <button class="btn"type="submit" name="Assign Standard">Assign Standard</button>
-        </form>
         <?php
     }
     if($row['access_type'] == 'admin'){
         ?>
-        <form action="assign_chap.php"method="POST"enctype="multipart/form-data">
-        <button class="btn"type="submit" name="Assign Chap">Assign Chap</button>
-    </form>
+    <a href="assign_chap.php"><button>Assign Chapter</button></a><br><br>
     <?php
     }
     ?>
-        <form action="logout.php"method="POST"enctype="multipart/form-data">
-            <button class="btn"type="submit"name="logout">Logout</button>
-        </form>
+        <a href="logout.php"><button>Logout</button></a>
+        </ul>
         </div>
-        
+        </div>   
     </body>
 </html>

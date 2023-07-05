@@ -1,8 +1,4 @@
-<?php
-if(isset($_POST['chapter'])){
-    global $connection;
-    ?>
-    <?php include "db.php";
+<?php include "db.php";
 
 $query = "SELECT * FROM `chapter`";
 $result = mysqli_query($connection,$query); 
@@ -38,8 +34,3 @@ if(mysqli_num_rows($result)>0){
     <button><a href="chapter_add.php?view=<?php echo $row['id'];?>">ADD CHAPTER</a></button>
         </td><br><br>
     <button><a href="dashboard.php">Dashboard</a></button></center>
-<?php
-
-}
-
-?>

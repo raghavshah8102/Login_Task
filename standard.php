@@ -1,8 +1,4 @@
-<?php
-if(isset($_POST['standard'])){
-    global $connection;
-    ?>
-    <?php include "db.php";
+<?php include "db.php";
 
 $query = "SELECT * FROM `standard`";
 $result = mysqli_query($connection,$query); 
@@ -38,8 +34,3 @@ if(mysqli_num_rows($result)>0){
     <center>
     <button><a href="standard_add.php?view=<?php echo $row['id']?>">ADD STANDARD</a></button>
     <button><a href="dashboard.php">Dashboard</a></button></center>
-<?php
-
-}
-
-?>

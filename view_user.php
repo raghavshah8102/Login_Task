@@ -1,6 +1,6 @@
 <?php
-if(isset($_POST['view'])){
-    global $connection;
+// if(isset($_POST['view'])){
+    // global $connection;
     ?>
     <?php include "db.php";
 
@@ -46,6 +46,6 @@ if(mysqli_num_rows($result)>0){
     <center><button><a href="dashboard.php">Dashboard</a></button></center>
 <?php
 
-}
+// }
 
 ?>

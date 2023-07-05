@@ -21,7 +21,6 @@
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $studentName = $row['username'];
-            // $id = $row['id'];
             echo "<option>$studentName</option>";
         }
     }
@@ -36,7 +35,6 @@ $sql = "SELECT * FROM standard";
 $result = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
     $name = $row['standard'];
-    // $id = $row['id'];
 echo "<option>$name</option>";
 }
 ?>
